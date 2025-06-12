@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+
+<html lang="en" class="dark">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Low Cost Fire Solutions</title>
+
+    
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        };
+    </script>
+</head>
+
+<body>
+
+    <nav x-data="{ isOpen: false }" class="sticky top-0 z-50 bg-white shadow dark:bg-gray-700">
+    <div class="container px-6 py-4 mx-auto">
+        <div class="lg:flex lg:items-center lg:justify-between">
+        <!-- Logo -->
+        <div class="flex items-center justify-between">
+            <a href="index.html" class="flex items-center">
+            <img src="./IMG/Logo.png" alt="Logo" class="h-10 max-h-[40px] w-auto object-contain">
+            </a>
+
+            <!-- Mobile menu button -->
+            <div class="flex lg:hidden">
+            <button @click="isOpen = !isOpen" type="button"
+                class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none"
+                aria-label="toggle menu">
+                <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+                </svg>
+                <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            </div>
+        </div>
+
+        <!-- Menu links -->
+        <div :class="{ 'hidden': !isOpen, 'flex': isOpen }"
+            class="flex-col mt-4 space-y-2 lg:flex lg:flex-row lg:space-y-0 lg:space-x-6 lg:items-center lg:mt-0">
+            <a href="#" class="px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition">Inicio</a>
+            <a href="#" class="px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition">Nosotros</a>
+
+            <!-- Separator -->
+            <span class="mx-2 border-l h-6 border-gray-300 dark:border-gray-600"></span>
+
+            <!-- Texto simple -->
+            <span class="px-3 py-2 text-gray-500 dark:text-gray-400">Categorías</span>
+
+            <!-- Dropdown: Equipamiento Incendios -->
+            <div x-data="{ open: false }" class="relative">
+            <button @click="open = !open"
+                class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition">
+                Equipamiento Incendios
+                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.939l3.71-3.71a.75.75 0 111.06 1.061l-4.24 4.24a.75.75 0 01-1.06 0l-4.24-4.24a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd" />
+                </svg>
+            </button>
+            <div x-show="open" @click.away="open = false" x-transition
+                class="absolute right-0 w-56 mt-2 bg-white dark:bg-gray-800 rounded-md shadow-lg z-50">
+                <a href="#incendios-equipamiento"
+                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Incendios</a>
+                <a href="#equipamiento"
+                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Equipamiento</a>
+            </div>
+            </div>
+
+            <!-- Dropdown: Hogar -->
+            <div x-data="{ open: false }" class="relative">
+            <button @click="open = !open"
+                class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition">
+                Hogar
+                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.939l3.71-3.71a.75.75 0 111.06 1.061l-4.24 4.24a.75.75 0 01-1.06 0l-4.24-4.24a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd" />
+                </svg>
+            </button>
+            <div x-show="open" @click.away="open = false" x-transition
+                class="absolute right-0 w-56 mt-2 bg-white dark:bg-gray-800 rounded-md shadow-lg z-50">
+                <a href="#hogar-incendios" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Incendios</a>
+                <a href="#hogar-capacitacion" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Capacitación</a>
+                <a href="#hogar-kit" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Kit Emergencia</a>
+                <a href="#hogar-articulos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Artículos Seguridad</a>
+            </div>
+            </div>
+
+            <!-- Dropdown: Asesoría y Capacitación -->
+            <div x-data="{ open: false }" class="relative">
+            <button @click="open = !open"
+                class="flex items-center px-3 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition">
+                Asesoría y Capacitación
+                <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 10.939l3.71-3.71a.75.75 0 111.06 1.061l-4.24 4.24a.75.75 0 01-1.06 0l-4.24-4.24a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd" />
+                </svg>
+            </button>
+            <div x-show="open" @click.away="open = false" x-transition
+                class="absolute right-0 w-56 mt-2 bg-white dark:bg-gray-800 rounded-md shadow-lg z-50">
+                <a href="#asesoria-incendios"
+                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Incendios</a>
+            </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    </nav>
+
+    <main>
+
+
+        <!-- Carrusel automático y responsive -->
+        <div 
+        x-data="{
+            activeSlide: 0,
+            slides: [0, 1, 2],
+            init() {
+            setInterval(() => {
+                this.activeSlide = (this.activeSlide + 1) % this.slides.length;
+            }, 10000); // 5 segundos
+            }
+        }"
+        class="relative w-full overflow-hidden mt-0.9"
+        >
+        <!-- Slides -->
+        <div 
+            class="flex transition-transform duration-700 ease-in-out"
+            :style="'transform: translateX(-' + activeSlide * 100 + '%)'"
+        >
+            <!-- Slide 1 -->
+            <div class="w-full flex-shrink-0">
+            <img src="./IMG/banner-nro1.png" alt="Slide 1" class="w-full h-[300px] md:h-[650px] object-cover">
+            </div>
+            <!-- Slide 2 -->
+            <div class="w-full flex-shrink-0">
+            <img src="./IMG/banner-nro2.png" alt="Slide 2" class="w-full h-[300px] md:h-[650px] object-cover">
+            </div>
+            <!-- Slide 3 -->
+            <div class="w-full flex-shrink-0">
+            <img src="./IMG/banner-nro3.png" alt="Slide 3" class="w-full h-[300px] md:h-[650px] object-cover">
+            </div>
+        </div>
+
+        <!-- Botones de navegación -->
+        <button 
+            @click="activeSlide = (activeSlide === 0) ? slides.length - 1 : activeSlide - 1"
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white px-3 py-2 rounded-full hover:bg-opacity-60"
+        >
+            ‹
+        </button>
+        <button 
+            @click="activeSlide = (activeSlide + 1) % slides.length"
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white px-3 py-2 rounded-full hover:bg-opacity-60"
+        >
+            ›
+        </button>
+
+        <!-- Indicadores -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <template x-for="(slide, index) in slides" :key="index">
+            <button 
+                @click="activeSlide = index"
+                :class="{
+                'bg-white': activeSlide === index,
+                'bg-gray-400': activeSlide !== index
+                }"
+                class="w-3 h-3 rounded-full focus:outline-none"
+            ></button>
+            </template>
+        </div>
+        </div>
+
+        <!--Nuestra mision-->
+                <div class="px-6 md:px-16 mt-10 space-y-12">
+        <!-- Sección: Nuestra misión -->
+        <div>
+            <h2 class="text-2xl font-bold text-center mb-6">Nuestra misión</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-800 dark:text-white">
+            <!-- Card 1 -->
+            <div class="flex items-center gap-4 p-6 rounded-xl bg-white border border-gray-300 dark:bg-gray-900 dark:border-gray-700">
+                <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 17.25L18.25 21l-1.5-6.75L22 9.75l-6.875-.5L12 3 8.875 9.25 2 9.75l5.25 4.5L5.75 21 12 17.25z" />
+                </svg>
+                <span class="text-lg font-semibold">Productos de alta calidad</span>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flex items-center gap-4 p-6 rounded-xl bg-white border border-gray-300 dark:bg-gray-900 dark:border-gray-700">
+                <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636a9 9 0 11-12.728 0M15 11a3 3 0 11-6 0" />
+                </svg>
+                <span class="text-lg font-semibold">Excelente servicio al cliente</span>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flex items-center gap-4 p-6 rounded-xl bg-white border border-gray-300 dark:bg-gray-900 dark:border-gray-700">
+                <svg class="w-10 h-10 text-yellow-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 4.5l1.5 16.5h16.5l1.5-16.5H2.25zm3 0h13.5m-10.5 5.25h7.5M9 14.25h6" />
+                </svg>
+                <span class="text-lg font-semibold">Experiencia de compra agradable</span>
+            </div>
+            </div>
+        </div>
+
+        <!-- Sección: Horario + Mapa -->
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Card Horario -->
+            <!-- Card Horario mejorada -->
+            <div class="bg-gray-800 shadow-lg rounded-lg p-6 w-full md:w-1/2">
+            <h2 class="text-2xl font-bold mb-6 text-white text-center">Horario de Atención</h2>
+            
+            <div class="divide-y divide-gray-700">
+                <!-- Día individual -->
+                <div class="flex justify-between py-3 items-center">
+                <span class="text-white font-medium">Lunes</span>
+                <span class="text-gray-300">09:00 a. m. – 06:30 p. m.</span>
+                </div>
+                <div class="flex justify-between py-3 items-center">
+                <span class="text-white font-medium">Martes</span>
+                <span class="text-gray-300">09:00 a. m. – 06:30 p. m.</span>
+                </div>
+                <div class="flex justify-between py-3 items-center">
+                <span class="text-white font-medium">Miércoles</span>
+                <span class="text-gray-300">09:00 a. m. – 06:30 p. m.</span>
+                </div>
+                <div class="flex justify-between py-3 items-center">
+                <span class="text-white font-medium">Jueves</span>
+                <span class="text-gray-300">09:00 a. m. – 06:30 p. m.</span>
+                </div>
+                <div class="flex justify-between py-3 items-center">
+                <span class="text-white font-medium">Viernes</span>
+                <span class="text-gray-300">09:00 a. m. – 06:30 p. m.</span>
+                </div>
+                <div class="flex justify-between py-3 items-center">
+                <span class="text-white font-medium">Sábado</span>
+                <span class="text-red-400 font-semibold">Cerrado</span>
+                </div>
+                <div class="flex justify-between py-3 items-center">
+                <span class="text-white font-medium">Domingo</span>
+                <span class="text-red-400 font-semibold">Cerrado</span>
+                </div>
+            </div>
+            </div>
+
+
+            <!-- Card Mapa -->
+            <div class="bg-gray-800 shadow-lg rounded-lg p-6 w-full md:w-1/2">
+            <h2 class="text-2xl font-bold mb-4 text-white text-center">Ubicación</h2>
+            <div class="aspect-video rounded-md overflow-hidden">
+                <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d836.3655121810184!2d-71.55097773040582!3d-33.01795549834774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9689dde737a4079f%3A0xb214a7ae32cd6d9c!2sAv.%20Libertad%20448%2C%202520739%20Vi%C3%B1a%20del%20Mar%2C%20Valpara%C3%ADso!5e0!3m2!1ses!2scl!4v1749248244217!5m2!1ses!2scl" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+        <!-- Carrusel horizontal de cards -->
+        <section class="overflow-hidden py-5">
+        <h2 class="text-2xl font-bold text-center mb-6">Nuestros productos</h2>
+        <div class="relative">
+            <div class="flex gap-4 animate-scroll-horizontal w-max px-4">
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/1.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Piton curvo Floor Below</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/2.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Piton Split Void</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/3.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Piton Piercing / Piton Clavo</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/4.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Piton Cortina</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/5.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Maleta S.C.I. Grande</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/6.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Maleta Phoenix Case</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/7.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Maleta S.C.I. Mediana</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/8.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Bolso Rit True North</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/9.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Mascaras Scott y MSA</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/10.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Piscina Abisagrada</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/11.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Generador Inverter</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/12.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Generador electrico KOLVOK</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/13.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Generador electrico KOLVOK</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+                <!-- Card centrada con imagen, título y botón -->
+                <div class="min-w-[250px] max-w-[250px] h-[400px] bg-white border border-gray-300 rounded-lg shadow-md overflow-hidden flex flex-col items-center">
+                <!-- Imagen cuadrada -->
+                <img src="./IMG/14.png" alt="Casco" class="w-full aspect-square object-cover">
+                
+                <!-- Contenido centrado -->
+                <div class="bg-gray-100 p-4 flex flex-col items-center justify-center flex-1 w-full">
+                    <h3 class="text-center text-base font-semibold mb-3">Generador electrico KOLVOK</h3>
+                    <button class="px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+        </div>
+        </section>
+
+
+        <!--Productos-->
+
+        <section id="incendios-equipamiento" class="py-8 px-6 bg-gray-100 dark:bg-gray-900 scroll-mt-[72px]">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Incendios</h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-6">Encontrarás todo lo relacionado a...</p>
+        <hr><br>
+
+        <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Bomberos</h3>
+
+        <!-- Tabs -->
+        <div id="tabs" class="flex overflow-x-auto overflow-y-hidden border-b border-gray-200 whitespace-nowrap dark:border-gray-700">
+            <button onclick="showTab('altura', event)" class="tab-btn bg-gray-400 text-white border-gray-400">Incendios altura</button>
+            <button onclick="showTab('vehiculares', event)" class="tab-btn text-white">Incendios vehiculares</button>
+            <button onclick="showTab('pitones', event)" class="tab-btn text-white">Pitones especiales</button>
+            <button onclick="showTab('extintores', event)" class="tab-btn text-white">Extintores</button>
+            <button onclick="showTab('rit', event)" class="tab-btn text-white">RIT</button>
+            <button onclick="showTab('bolsos', event)" class="tab-btn text-white">Bolsos</button>
+            <button onclick="showTab('era', event)" class="tab-btn text-white">ERA</button>
+            <button onclick="showTab('piscinas', event)" class="tab-btn text-white">Piscinas</button>
+            <button onclick="showTab('seguridad', event)" class="tab-btn text-white">Artículos seguridad</button>
+            <button onclick="showTab('accesorios', event)" class="tab-btn text-white">Accesorios</button>
+        </div>
+
+        <!-- Contenido del Tab -->
+        <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Incendios altura</strong>.</p>
+            <div id="cards-container" class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+            <!-- Aquí se insertarán dinámicamente las tarjetas desde JavaScript -->
+            </div>
+        </div>
+
+        <br><hr><br>
+
+        <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Hogar</h3>
+        <div id="tabs-hogar" class="flex overflow-x-auto overflow-y-hidden border-b border-gray-200 whitespace-nowrap dark:border-gray-700">
+            <button onclick="showHogarTab(event)" class="tab-btn bg-gray-400 text-white border-gray-400">Extintores</button>
+        </div>
+
+        <div id="tab-content-hogar" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p id="tab-message-hogar" class="mb-6">Estás viendo contenido de <strong>Extintores</strong>.</p>
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+            <div class="max-w-xs overflow-hidden bg-white border border-gray-300 rounded-lg shadow-lg dark:bg-gray-800">
+                <div class="px-4 py-2 bg-gray-100 dark:bg-gray-800">
+                <h1 class="text-xl font-bold text-gray-800 uppercase dark:text-white">Sin productos</h1>
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Próximamente llegarán nuevos productos</p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Extintor">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-800">
+                <h1 class="text-lg font-bold text-gray-800 dark:text-white">$0</h1>
+                <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                </button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <br><hr><br>
+
+        <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Semi Nuevo</h3>
+        <div id="tab-content-seminuevo" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p class="mb-6">Estás viendo contenido de <strong>Semi Nuevo</strong>.</p>
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+            <!-- Aquí podrías agregar productos seminuevos si lo deseas -->
+            </div>
+        </div>
+
+        <!-- MODAL REUTILIZABLE -->
+        <div id="tabModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 hidden overflow-auto">
+        <div class="bg-white dark:bg-gray-900 w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3 max-h-[90vh] overflow-y-auto p-6 rounded-xl relative">
+            <button onclick="closeTabModal()" class="absolute top-4 right-4 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white text-2xl font-bold z-10">&times;</button>
+            
+            <img id="tabModalImg" src="" alt="Imagen producto" class="w-full max-h-96 object-contain rounded mb-4">
+            
+            <h2 id="tabModalTitle" class="text-3xl font-bold text-gray-800 dark:text-white mb-2"></h2>
+            <p id="tabModalPrice" class="text-lg text-gray-700 dark:text-gray-300 font-semibold mb-4"></p>
+            
+            <div class="text-sm text-gray-600 dark:text-gray-400 whitespace-pre-line">
+            <p id="tabModalDesc"></p>
+            </div>
+        </div>
+        </div>
+
+        </section>
+
+
+
+        <section id="equipamiento" class="py-8 px-6 bg-gray-100 dark:bg-gray-800 scroll-mt-[72px]">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Equipamiento</h2>
+            <p class="text-gray-700 dark:text-gray-300">Encontraras todo lo relacionado a...</p>
+            <br>
+            <hr>
+            <br>
+            <div x-data="{
+                generadores: [
+                    {
+                        titulo: 'GENERADOR INVERTER DE 2.0KW',
+                        descripcion: `CARACTERÍSTICAS\n> EXCELENTE FUENTE DE ENERGÍA PARA PEQUEÑOS APARATOS ELECTRÓNICOS Y ELECTRODOMÉSTICOS.\n> SÚPER SILENCIOSO: IDEAL PARA ACAMPAR Y USO RESIDENCIAL.\n> COMPACTO Y LIVIANO: 18KG PARA UNA PORTABILIDAD SIMPLE.\n> EFICIENCIA DE COMBUSTIBLE: TIEMPO DE FUNCIONAMIENTO DE 6 HORAS CON MENOS DE 3.7 LITROS DE GASOLINA.\n> ENERGÍA CONFIABLE: LA TECNOLOGÍA DE INVERSOR CREA ENERGÍA SEGURA PARA COMPUTADORAS Y EQUIPOS SENSIBLES.\n> CONECTE FÁCILMENTE DOS GENERADORES CON TECNOLOGÍA PARALELA PARA DUPLICAR LA POTENCIA.\n> SALIDAS GFCI PARA LA ENERGÍA MÁS SEGURA.\n> SALIDA DE 220 VOLTS CON CONECTOR SCHUKO.\n> CON REGULADOR AUTOMÁTICO DE VOLTAJE (AVR).\n\nESPECIFICACIONES TÉCNICAS\n> MARCA: TOMAHAWK POWER\n> MODELO: TG2000I\n> POTENCIA: 3.2 HP\n> AMPERAJE: 9 A\n> CILINDRADA: 79.7 CC\n> POTENCIA DE ARRANQUE: 2000 W\n> POTENCIA NOMINAL: 1800 W\n> REGULADOR AUTOMÁTICO DE VOLTAJE (AVR): SÍ\n> FRECUENCIA: 50 HZ\n> TIEMPO DE FUNCIONAMIENTO @1/2 CARGA: 6 HORAS\n> TIPO DE COMBUSTIBLE: GASOLINA\n> TOMACORRIENTES 220V (SCHUKO): 2\n> SALIDAS USB: 1\n> CAPACIDAD DEL TANQUE: 2.7 L\n> CAPACIDAD DEL TANQUE DE ACEITE: 350ML\n> NIVEL DE RUIDO: 58 DBA\n> PESO: 18 KG\n> DIMENSIONES (CM): 50.8 X 30.4 X 48.2`,
+                        imagen: './IMG/11.png',
+                        precio: 'Sin información'
+                    },
+                    {
+                        titulo: 'GENERADOR ELÉCTRICO KOLVOK 6.5KVA GASOLINA GO70GTA',
+                        descripcion: `FICHA TÉCNICA\n> CONSUMO: SIN INFORMACIÓN.\n> AUTONOMÍA: 18 H.\n> CAPACIDAD ACEITE: SIN INFORMACIÓN.\n> SISTEMA ARRANQUE: ELÉCTRICO Y MANUAL.\n> CAPACIDAD DEPÓSITO COMBUSTIBLE: 28 LT.\n> POTENCIA MÁXIMA: 6000 W.\n> POTENCIA NOMINAL: 6500 W.\n> MOTOR: MONOCILÍNDRICO 4 TIEMPOS.\n> CILINDRADA: 420 CC.\n> FRECUENCIA: 50 HZ.\n> VOLTAJE: 220 V.\n> TIPO DE CORRIENTE: MONOFÁSICA.\n> DIMENSIONES: 73 X 57 X 58.\n> PESO: 92 KG.\n\nCARACTERÍSTICAS GENERALES:\n> EQUIPADO CON REGULADOR DE VOLTAJE AUTOMÁTICO (AVR), QUE GARANTIZA UNA POTENCIA CONFIABLE Y CONSTANTE, AL TIEMPO QUE EVITA DAÑOS AL GENERADOR Y A LOS DISPOSITIVOS CONECTADOS A ÉL.\n> PARTIDA ELÉCTRICA / MANUAL.\n> MARCO ROBUSTO DE 32MM.\n> TANQUE DE COMBUSTIBLE CON CAPACIDAD DE 28L.\n> PANTALLA MULTIFUNCIÓN: VOLTÍMETRO, FRECUENCÍOMETRO, HORÓMETRO.\n> MANILLAS RETRÁCTILES Y RUEDAS PARA FACILITAR SU TRASLADO.\n> ILUMINACIÓN DE PANEL LED.\n> ALARMA DE ACEITE.\n> INTERRUPTOR GENERAL.\n> 1 SALIDA 220V/16A.\n> 1 SALIDA INDUSTRIAL 220/32A.\n> CARGADOR DC 12V/8,3A.\n\nUNIDAD GENERADORA:\n> VOLTAJE: 220 V.\n> FRECUENCIA: 50 HZ.\n> CORRIENTE NOMINAL: 27,3 A.\n> POTENCIA NOMINAL: 6.0 KW / 6.0 KWA.\n> POTENCIA MÁXIMA: 6.5 KW / 6.5 KWA.\n> NÚMERO DE FASES: MONOFÁSICO.\n> FACTOR POTENCIA: 1.\n\nUNIDAD MOTRIZ:\n> TIPO MOTOR: MONOCILÍNDRICO 4 TIEMPOS.\n> REFRIGERACIÓN: POR AIRE.\n> NIVEL DE RUIDO: 74DB (A)/7M.\n> PARTIDA: ELÉCTRICA / MANUAL.\n> AUTONOMÍA TANQUE LLENO: >18H.`,
+                        imagen: './IMG/12.png',
+                        precio: 'Sin información'
+                    },
+                    {
+                        titulo: 'GENERADOR ELÉCTRICO KOLVOK 6.5KVA DISEL GO65DE',
+                        descripcion: `FICHA TÉCNICA\n> CONSUMO: SIN INFORMACIÓN.\n> AUTONOMÍA: 5 H.\n> CAPACIDAD ACEITE: 1.4 LT.\n> SISTEMA ARRANQUE: ELÉCTRICO Y MANUAL.\n> CAPACIDAD DEPÓSITO COMBUSTIBLE: 12.5 LT.\n> POTENCIA MÁXIMA: 6500 W.\n> POTENCIA NOMINAL: 6000 W.\n> MOTOR: MONOCILÍNDRICO 4 TIEMPOS.\n> CILINDRADA: SIN INFORMACIÓN.\n> FRECUENCIA: 50 HZ.\n> VOLTAJE: 230 V.\n> TIPO DE CORRIENTE: MONOFÁSICA.\n> DIMENSIONES: 73 X 57 X 58 CM.\n> PESO: 125 KG.\n\nCARACTERÍSTICAS GENERALES:\n> EQUIPADO CON REGULADOR DE VOLTAJE AUTOMÁTICO (AVR), QUE GARANTIZA UNA POTENCIA CONFIABLE Y CONSTANTE, AL TIEMPO QUE EVITA DAÑOS AL GENERADOR Y A LOS DISPOSITIVOS CONECTADOS A ÉL.\n> MARCO ROBUSTO DE 32MM.\n> MANILLAS RETRÁCTILES Y RUEDAS PARA FACILITAR SU TRASLADO.\n> TANQUE DE COMBUSTIBLE CON CAPACIDAD DE 12,5L.\n> PANTALLA MULTIFUNCIÓN: HORÓMETRO, VOLTÍMETRO, FRECUENCÍOMETRO.\n> INTERRUPTOR GENERAL.\n> 2 SALIDAS AC230V.\n> CARGADOR 12V DC/8,3A.\n\nUNIDAD GENERADORA:\n> VOLTAJE: 230 V.\n> FRECUENCIA: 50 HZ.\n> CORRIENTE NOMINAL: 26A.\n> POTENCIA NOMINAL: 6.0 KW / 6.0 KVA.\n> POTENCIA MÁXIMA: 6.5 KW / 6.5 KVA.\n> FASES: MONOFÁSICO.\n> FACTOR POTENCIA: 1.\n\nUNIDAD MOTRIZ:\n> TIPO MOTOR: MONOCILÍNDRICO 4 TIEMPOS.\n> REFRIGERACIÓN: POR AIRE.\n> NIVEL DE RUIDO: 74DB (A)/7M.\n> PARTIDA: ELÉCTRICA / MANUAL.\n> AUTONOMÍA TANQUE LLENO: >5H.`,
+                        imagen: './IMG/13.png',
+                        precio: 'Sin información'
+                    },
+                    {
+                        titulo: 'GENERADOR ELÉCTRICO KOLVOK 6.5KVA HOLVOK GS850D',
+                        descripcion: `NUESTRO GENERADOR ELÉCTRICO A DIÉSEL DE 6.5 KVA, MODELO GS850D DE KOLVOK, HA LLEGADO AL MERCADO PARA MARCAR LA DIFERENCIA. EQUIPADO CON UNA CABINA INSONORIZADA QUE REDUCE EL NIVEL DE RUIDO A 74DB, Y UNA POTENCIA MONOFÁSICA DE 6.000W, ESTE GENERADOR OFRECE UN SUMINISTRO DE ENERGÍA DE ALTA CALIDAD PARA CUALQUIER HOGAR.\n\nEL GS850D CUENTA CON UN PANEL SMARTGEN DE ÚLTIMA TECNOLOGÍA PARA MONITOREAR Y CONTROLAR EL EQUIPO, JUNTO CON UNA SERIE DE ALARMAS QUE MANTIENEN AL USUARIO INFORMADO SOBRE LOS NIVELES DEL GENERADOR. CON FUNCIÓN DE PARADA DE EMERGENCIA Y ARRANQUE ELECTRÓNICO DESDE EL MISMO PANEL DE CONTROL, SU USO ES CÓMODO Y SENCILLO. ADEMÁS, SE PUEDE CONECTAR A UN TABLERO DE TRANSFERENCIA AUTOMÁTICA ATS PARA ARRANCAR AUTOMÁTICAMENTE EN CASO DE CORTE DE CORRIENTE. CON UN SISTEMA DE DOBLE VENTILACIÓN PARA MANTENER UNA TEMPERATURA ÓPTIMA EN TODO MOMENTO, GARANTIZA UN RENDIMIENTO ÓPTIMO Y SIN INCONVENIENTES.\n\nESPECIFICACIONES:\n> AMPERAJE: 26A.\n> CAPACIDAD DE TANQUE: 14.5L.\n> CATEGORÍA: GENERACIÓN.\n> FACTOR DE POTENCIA: 1.0 (COS PHI).\n> FASE: MONOFÁSICO.\n> INCLUYE CONEXIÓN A ATS: SÍ (NO INCLUYE EQUIPO ATS).\n> INSONORIZADO: SÍ.\n> PARTIDA: ELÉCTRICA.\n> POTENCIA MÁXIMA: 6.5 KW / 6.5 KVA.\n> POTENCIA NOMINAL: 6.0 KW / 6.0 KVA.\n> REFRIGERACIÓN: AIRE.\n> TIPO TECNOLOGÍA: RESPALDO.\n> VOLTAJE FRECUENCIA: 220V / 50HZ.\n\nDIMENSIONES Y PESO:\n> LARGO: 96 CM.\n> ANCHO: 53 CM.\n> ALTURA: 53 CM.\n> PESO: 170 KG.`,
+                        imagen: './IMG/14.png',
+                        precio: 'Sin información'
+                    }
+                ],
+
+                extractores: [
+                    {
+                        titulo: 'Sin productos',
+                        descripcion: 'Proximamente llegaran nuevos productos.',
+                        imagen: './IMG/sin-imagen.jpg',
+                        precio: '$0'
+                    }
+                ],
+              mostrarModal: false,
+        productoSeleccionado: null,
+        abrirModal(producto) {
+            this.productoSeleccionado = producto;
+            this.mostrarModal = true;
+        },
+        cerrarModal() {
+            this.mostrarModal = false;
+        }
+    }">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Generadores</h3>
+                    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                        <template x-for="producto in generadores" :key="producto.titulo">
+                            <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                                <div class="px-4 py-2">
+                                    <h1 class="text-xl font-bold text-white uppercase line-clamp-2 whitespace-pre-line" 
+                                        x-html="producto.titulo.replace(/\n/g, '<br>')"></h1>
+                                    <p class="mt-1 text-sm text-gray-300 line-clamp-3 whitespace-pre-line" 
+                                        x-html="producto.descripcion.replace(/\n/g, '<br>')"></p>
+                                </div>
+                                <img class="object-cover w-full aspect-square mt-2" :src="producto.imagen" alt="">
+                                <div class="flex items-center justify-between px-4 py-2">
+                                    <h1 class="text-lg font-bold text-white" x-text="producto.precio"></h1>
+                                    <button @click="abrirModal(producto)" class="px-2 py-1 text-xs font-semibold text-gray-900 bg-white rounded hover:bg-gray-200">
+                                        Más información
+                                    </button>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <br><hr><br>
+
+                <!-- Extractores -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Extractores</h3>
+                    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                        <template x-for="producto in extractores" :key="producto.titulo">
+                            <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                                <div class="px-4 py-2">
+                                    <h1 class="text-xl font-bold text-white uppercase" x-text="producto.titulo"></h1>
+                                    <p class="mt-1 text-sm text-gray-300" x-text="producto.descripcion"></p>
+                                </div>
+                                <img class="object-cover w-full aspect-square mt-2" :src="producto.imagen" alt="">
+                                <div class="flex items-center justify-between px-4 py-2">
+                                    <h1 class="text-lg font-bold text-white" x-text="producto.precio"></h1>
+                                    <button @click="abrirModal(producto)" class="px-2 py-1 text-xs font-semibold text-gray-900 bg-white rounded hover:bg-gray-200">
+                                        Más información
+                                    </button>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div x-show="mostrarModal" x-transition class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div @click.outside="cerrarModal" class="bg-white dark:bg-gray-900 rounded-lg shadow-lg max-w-lg w-full p-6 relative overflow-y-auto max-h-[90vh]">
+                        <button @click="cerrarModal" class="absolute top-2 right-2 text-gray-700 dark:text-gray-200 text-xl font-bold">&times;</button>
+                        <template x-if="productoSeleccionado">
+                            <div>
+                                <h2 class="text-xl font-bold mb-2 text-gray-800 dark:text-white" x-html="productoSeleccionado.titulo.replace(/\n/g, '<br>')"></h2>
+                                <img :src="productoSeleccionado.imagen" alt="" class="w-full h-auto rounded mb-4">
+                                <p class="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line" x-html="productoSeleccionado.descripcion.replace(/\n/g, '<br>')"></p>
+                                <p class="text-lg font-semibold mt-4 text-gray-800 dark:text-white" x-text="productoSeleccionado.precio"></p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+
+
+        <section id="hogar-incendios" class="py-8 px-6 bg-gray-100 dark:bg-gray-900 scroll-mt-[72px]">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Incendios</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Encontrarás todo lo relacionado a...</p>
+            
+            <hr>
+            <br>
+
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Extintores</h3>
+
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Extintores</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Detectores</h3>
+
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Detectores</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Camaras</h3>
+
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Camaras</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Kit Incendios</h3>
+
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Kit Incendios</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+        </section>
+
+        <section id="hogar-capacitacion" class="py-8 px-6 bg-gray-100 dark:bg-gray-800 scroll-mt-[72px]">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Capacitacion</h2>
+            <p class="text-gray-700 dark:text-gray-300">Encontraras todo lo relacionado a...</p>
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+                
+                <hr>
+                <br>
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Incendios</h3>
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Incendios</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+                <br>
+                <hr>
+                <br>
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Sismos</h3>
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Sismos</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+
+        </section>
+
+        <section id="hogar-kit" class="py-8 px-6 bg-gray-100 dark:bg-gray-900 scroll-mt-[72px]">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Kit Emergencia</h2>
+            <p class="text-gray-700 dark:text-gray-300">Encontraras todo lo relacionado a...</p>
+            <br>
+            <hr>
+            <br>
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Mochila</h3>
+
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Mochilas</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+                <br>
+                <hr>
+                <br>
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Botiquin</h3>
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Botiquines</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+
+        </section>
+
+        <section id="hogar-articulos" class="py-8 px-6 bg-gray-100 dark:bg-gray-800 scroll-mt-[72px]">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Articulos seguridad</h2>
+            <p class="text-gray-700 dark:text-gray-300">Encontraras todo lo relacionado a...</p>
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+                
+                <hr>
+                <br>
+                <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Guantes</h3>
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Guantes</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+        </section>
+
+
+
+        <section id="asesorias-incendios" class="py-8 px-6 bg-gray-100 dark:bg-gray-900 scroll-mt-[72px]">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Incendios</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Encontrarás todo lo relacionado a...</p>
+            
+            <hr>
+            <br>
+
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Interfaz</h3>
+
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Interfaz</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <h3 class="text-xl font-semibold text-gray-700 dark:text-white mb-4">Abastecimiento</h3>
+
+            <!-- Contenido -->
+            <div id="tab-content" class="mt-6 text-gray-800 dark:text-gray-200">
+            <p id="tab-message" class="mb-6">Estás viendo contenido de <strong>Abastecimiento</strong>.</p>
+
+            <div class="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                
+                <!-- Card 1 -->
+                <div class="max-w-xs overflow-hidden bg-gray-900 rounded-lg shadow-lg dark:bg-gray-900">
+                <div class="px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-xl font-bold text-white uppercase">Sin productos</h1>
+                    <p class="mt-1 text-sm text-gray-300">
+                    Proximamente llegaran nuevos productos.
+                    </p>
+                </div>
+                <img class="object-cover w-full aspect-square mt-2" src="./IMG/sin-imagen.jpg" alt="Manguera">
+                <div class="flex items-center justify-between px-4 py-2 bg-gray-900 dark:bg-gray-900">
+                    <h1 class="text-lg font-bold text-white">$0</h1>
+                    <button class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    Más información
+                    </button>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center sm:text-left">
+            
+            <!-- Contacto -->
+            <div>
+            <h2 class="text-lg font-semibold mb-4">Contacto</h2>
+            <div class="flex items-center justify-center sm:justify-start gap-2 mb-2">
+                <i class="fas fa-envelope text-sm text-gray-300"></i>
+                <span class="text-sm">venta@lcfs.cl</span>
+            </div>
+            <div class="flex items-center justify-center sm:justify-start gap-2 mb-2">
+                <i class="fas fa-phone text-sm text-gray-300"></i>
+                <span class="text-sm">(+56) 32 299 3827</span>
+            </div>
+            <div class="flex items-center justify-center sm:justify-start gap-2">
+                <i class="fas fa-map-marker-alt text-sm text-gray-300"></i>
+                <span class="text-sm">Libertad 448, Vina del Mar, Chile.</span>
+            </div>
+            </div>
+
+            <!-- Información -->
+            <div>
+            <h2 class="text-lg font-semibold mb-4">Información</h2>
+            <ul>
+                <li><a href="/nosotros.html" class="text-sm hover:underline">Sobre Nosotros</a></li>
+                <li><a href="/terminos.html" class="text-sm hover:underline">Términos y Condiciones</a></li>
+                <li><a href="/privacidad.html" class="text-sm hover:underline">Política de Privacidad</a></li>
+            </ul>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div>
+            <h2 class="text-lg font-semibold mb-4">Redes Sociales</h2>
+            <div class="flex justify-center sm:justify-start space-x-4">
+                <a href="https://facebook.com" target="_blank" class="hover:text-blue-400">
+                <i class="fab fa-facebook-f text-xl"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="hover:text-blue-300">
+                <i class="fab fa-twitter text-xl"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="hover:text-pink-500">
+                <i class="fab fa-instagram text-xl"></i>
+                </a>
+            </div>
+            </div>
+
+        </div>
+
+        <div class="mt-10 text-center text-sm text-gray-400">
+            © 2025 Low Cost Fire Solutions. Todos los derechos reservados.
+        </div>
+    </footer>
+
+<style>
+  @keyframes scroll-horizontal {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-scroll-horizontal {
+    animation: scroll-horizontal 20s linear infinite;
+  }
+
+  .animate-scroll-horizontal:hover {
+  animation-play-state: paused;
+    }
+
+  .tab-btn {
+    height: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: -1px;
+    font-size: 0.875rem;
+    border-bottom-width: 2px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+
+  @media (min-width: 640px) {
+    .tab-btn {
+      font-size: 1rem;
+    }
+  }
+
+  .descripcion-corta {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* limita a 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+</style>
+
+
+<script>
+  const tabData = {
+    altura: [
+      {
+        title: "Piton curvo Floor Below",
+        desc: `EL PITÓN FLOOR BELOW, HA SIDO DISEÑADO ESPECÍFICAMENTE PARA COMBATIR INCENDIOS EN EDIFICIOS DE GRAN ALTURA DESDE EL PISO INFERIOR CON UN ÁNGULO Y UN CAUDAL EFECTIVOS. NO ES RARO EXPERIMENTAR CONDICIONES DE MUCHO CALOR Y VIENTO EN LOS INCENDIOS DE EDIFICIOS DE GRAN ALTURA QUE PUEDEN DESAFIAR LAS TÁCTICAS CONVENCIONALES. LA BOQUILLA FLOOR BELOW PROPORCIONA UNA SOLUCIÓN PROBADA EN EL CAMPO QUE PERMITE A LOS BOMBEROS HACER FLUIR AGUA DESDE EL PISO INFERIOR. VIENE EN UN DISEÑO DE DOS PIEZAS QUE FACILITA EL TRANSPORTE A LOS PISOS SUPERIORES Y EL ALMACENAMIENTO.\n\nCARACTERÍSTICAS:\n- TUBO DE ACERO INOX 304.\n- ENTRADA STORZ DE 2\".\n- BOQUILLA DE 15/16 PULGADAS EN ALUMINIO.\n- ACCESORIOS DE ENTRADA Y SALIDA MECANIZADOS.\n- 2.5 METROS DE LARGO APROXIMADOS.\n- TODAS LAS COSTURAS Y CONEXIONES SOLDADAS CON TIG.\n- CUERPO SEPARABLE, PARA FÁCIL TRANSPORTE.\n- PRESIÓN OPERATIVA DE 60 PSI (4 BAR) (PROBADO A 100 PSI (7 BAR) CON AGUA).\n- 200 GPM A 4 BAR.\n- PINTURA EN POLVO ELECTROSTÁTICA ROJA O EN ACERO.`,
+        img: "./IMG/1.png",
+        price: "$3.558.000"
+    },
+      {
+        title: "Piton Split Void",
+        desc: `DISEÑADA ESPECÍFICAMENTE PARA COMBATIR INCENDIOS DESAFIANTES EN ESPACIOS HORIZONTALES COMO ÁTICOS Y TECHOS FALSOS, EL PITÓN HORIZONTAL SPLIT HA SIDO PROBADO EN CAMPO COMO UNA HERRAMIENTA EFECTIVA PARA EL TRABAJO. TIENE UNA ENTRADA DE 2 PULGADAS EN LA BASE, QUE SE PUEDE ATORNILLAR A UNA VÁLVULA DE CIERRE EXISTENTE, PROPORCIONANDO FLUJO DE AGUA A DOS BOQUILLAS OPUESTAS EN ÁNGULO DE 90 GRADOS.\nCON UNA LONGITUD TOTAL DE 1.70 METROS Y DOS GRANDES ASAS, PERMITE A LOS BOMBEROS MANIPULAR LA BOQUILLA DE UN LADO A OTRO, DISTRIBUYENDO EFICAZMENTE EL AGUA EN EL ÁREA EN LLAMAS.\n\nCARACTERÍSTICAS:\n- LA PUNTA RECOMENDADA PARA ESTE DISPOSITIVO ES EL MODELO STACK CON LA PUNTA DE ½\" INSTALADA.\n- ESTO PERMITIRÁ UN FLUJO DE 50 GPM (190 LPM) DESDE CADA BOQUILLA, MANTENIENDO LA REACCIÓN DE LA BOQUILLA MANEJABLE Y DANDO A LOS BOMBEROS LA CAPACIDAD DE MANIOBRABILIDAD AL CASI NO TENER REACCIÓN GRACIAS A LOS CHORROS CONTRAPUESTOS.\n- TUBO DE ACERO INOX 304.\n- ENTRADA STORZ DE 2\"\n- BOQUILLAS DE 1/2 PULGADAS EN ALUMINIO (SEGUNDO PAR DE BOQUILLA DE BOQUILLAS 7/8 SE VENDEN POR SEPARADO)\n- ACCESORIOS DE ENTRADA Y SALIDA MECANIZADOS\n- TODAS LAS COSTURAS Y CONEXIONES SOLDADAS CON TIG\n- ANILLOS O DE BUNA N\n- PRESIÓN OPERATIVA DE 50 PSI (3.5 BAR)(PROBADO A 100 PSI (7 BAR) CON AGUA)\n- MANIJAS ERGONÓMICAS\n- PINTURA EN POLVO ELECTRO ESTÁTICA ROJA`,
+        img: "./IMG/2.png",
+        price: "$2.368.000"
+      },
+      {
+        title: "Piton Piercing / Clavo",
+        desc: `PIERCING NOZZLE ES UNA HERRAMIENTA ESPECIALIZADA UTILIZADA POR LOS BOMBEROS PARA INTRODUCIR AGUA EN ESPACIOS CONFINADOS Y DE DIFÍCIL ACCESO, COMO TECHOS, ENTRETECHOS, ÁTICOS Y SÓTANOS.\n\nESTOS PITONES ESTÁN DISEÑADOS PARA PENETRAR PAREDES Y OTROS OBSTÁCULOS, PERMITIENDO EL FLUJO DE AGUA DIRECTAMENTE AL ÁREA DEL INCENDIO SIN NECESIDAD DE ABRIR PUERTAS O VENTANAS, LO QUE PUEDE SER PELIGROSO Y CONSUMIR TIEMPO.`,
+        img: "./IMG/3.png",
+        price: "$1.416.000"
+      }
+    ],
+    vehiculares: [
+      {
+        title: "Sin productos",
+        desc: "Proximamente llegaran nuevos productos.",
+        img: "./IMG/sin-imagen.jpg",
+        price: "$0"
+      }
+    ],
+    pitones: [
+      {
+        title: "Piton Cortina",
+        desc: `- DISEÑADA CON PRECISIÓN Y FABRICADA CON UNA PLACA DE ALUMINIO EN FORMA DE ABANICO, ESTE PITÓN ES IDEAL PARA COMBATIR INCENDIOS EN ENTORNOS DESAFIANTES.\n- CARACTERÍSTICAS CLAVE:\n- BARRERAS DE AGUA: CREA CORTINAS DE AGUA QUE PROTEGE A LOS BOMBEROS Y LAS MAQUINAS DEL HUMO Y EL FUEGO.\n- REDUCCIÓN DE TEMPERATURA: DISMINUYE SIGNIFICATIVAMENTE LA TEMPERATURA, CUBRIENDO Y PROTEGIENDO ÁREAS AFECTADAS.\n- SALVA VIDAS: IDEAL PARA OPERACIONES DE RESCATE, BRINDANDO UNA COBERTURA RÁPIDA Y SEGURA.`,
+        img: "./IMG/4.png",
+        price: "$1.000"
+      }
+    ],
+    extintores: [
+      {
+        title: "Sin productos",
+        desc: "Proximamente llegaran nuevos productos.",
+        img: "./IMG/sin-imagen.jpg",
+        price: "$0"
+      }
+    ],
+    rit: [
+      {
+        title: "Sin productos",
+        desc: "Proximamente llegaran nuevos productos.",
+        img: "./IMG/sin-imagen.jpg",
+        price: "$0"
+      }
+    ],
+    bolsos: [
+      {
+        title: "Bolso Rit True North",
+        desc: `CARACTERÍSTICAS\n\nDISEÑADO PARA CONTENER TODAS LAS MARCAS DE MÁSCARAS Y BOTELLAS\n\nINCLUYE:\n- 1 MASCARA SCOTT AV2000 O MSA.\n- 1 MANGUERA QUICK FILL.\n- 1 REGULADOR SECUNDARIO PARA MASCARA.\n- 1 DESCONECTOR RÁPIDO PARA REGULADOR.\n- 1 REDUCTOR DE PRESIÓN PRIMARIO.\n\nOPCIONALES:\n- CUBRE CILINDROS IDENTIFICADORES DE EQUIPO RIT.\n- CUERDA DE BÚSQUEDA GUIADA DE 30 METROS Y MOSQUETONES\n- CILINDRO DE AIRE`,
+        img: "./IMG/8.png",
+        price: "$3.795.000"
+      }
+    ],
+    era: [
+      {
+        title: "Sin productos",
+        desc: "Proximamente llegaran nuevos productos.",
+        img: "./IMG/sin-imagen.jpg",
+        price: "$0"
+      }
+    ],
+    piscinas: [
+      {
+        title: "Piscina Abisagrada",
+        desc: `LAS PISCINAS ABISAGRADAS (TAMBIÉN CONOCIDAS COMO TANQUES PLEGABLES O DEPÓSITOS PORTÁTILES) SON UNA SOLUCIÓN VERSÁTIL Y EFICIENTE PARA EL ALMACENAMIENTO TEMPORAL O PERMANENTE DE AGUA EN DIVERSOS SECTORES, COMO AGRICULTURA, CONSTRUCCIÓN, EMERGENCIAS Y EVENTOS.\n\nCARACTERÍSTICAS TÉCNICAS:\n\n- ESTRUCTURA ROBUSTA Y PLEGABLE: FABRICADAS CON MATERIALES RESISTENTES (COMO PVC REFORZADO O LONA DE ALTA DENSIDAD) Y UN ARMAZÓN METÁLICO ABISAGRADO, PERMITEN UN MONTAJE RÁPIDO Y FÁCIL TRANSPORTE.\n- GRAN CAPACIDAD: DISPONIBLES EN MÚLTIPLES TAMAÑOS (DESDE 500 HASTA +100,000 LITROS), IDEALES PARA CUBRIR NECESIDADES DE ALMACENAMIENTO EN DIFERENTES ENTORNOS.\n- DURABILIDAD: RESISTENTES A CONDICIONES CLIMÁTICAS, RAYOS UV Y PRODUCTOS QUÍMICOS (SEGÚN MODELO).\n- PORTABILIDAD: SE PLIEGAN COMPACTAMENTE PARA FACILITAR SU TRASLADO Y ALMACENAMIENTO CUANDO NO ESTÁN EN USO.`,
+        img: "./IMG/10.png",
+        price: "$1.000"
+      }
+    ],
+    seguridad: [
+      {
+        title: "Sin productos",
+        desc: "Proximamente llegaran nuevos productos.",
+        img: "./IMG/sin-imagen.jpg",
+        price: "$0"
+      }
+    ],
+    accesorios: [
+      {
+        title: "Macaras Scott y Msa",
+        desc: `- CERTIFICACIÓN: APROBACIÓN PARA USO CON SCBA AIR-PAK X3 PRO - NFPA 1981, EDICIÓN 2018\n- APROBACIÓN PARA USO CON MODELOS DE SCBA AIR-PAK NFPA 1981, EDICIONES 2002, 2007 Y 2013\n- NUEVAS Y SEMI NUEVAS`,
+        img: "./IMG/9.png",
+        price: "$345.000"
+      },
+      {
+        title: "Maleta S.C.I. Grande",
+        desc: `UNA MALETA SCI ES UNA HERRAMIENTA QUE SE UTILIZA EN EL SISTEMA DE COMANDO DE INCIDENTES (SCI) DE LOS BOMBEROS PARA COORDINAR Y GESTIONAR SITUACIONES DE EMERGENCIA.\n\nLA MALETA SCI ES UNA HERRAMIENTA INDISPENSABLE PARA RESPONDER DE FORMA EFECTIVA Y ORGANIZADA EN SITUACIONES CRÍTICAS, COMO OPERACIONES DE RESCATE, GESTIÓN DE CRISIS O COORDINACIÓN DE EMERGENCIAS.`,
+        img: "./IMG/5.png",
+        price: "$820.000"
+      },
+      {
+        title: "Maleta Phoenix Case",
+        desc: `- PROVISTA DE 2 PLANTAS DE TRABAJO Y 1 PIZARRA DE APOYO, PERSONALIZABLES.\n- MALETA DE PLÁSTICO ULTRA RESISTENTE Y PATAS PLEGABLES.\n- PRINCIPAL 1, PLANTA IMANTADA, INFORMACIÓN PARA EL CONTROL DE CARROS EN SERVICIO, DISPONIBLES Y EN ZONA DE ESPERA, ADEMÁS DE RECUADROS SCI\n- PRINCIPAL 2, PLANTA ACRÍLICA DE 5 MM, CON GRILLA FORESTAL Y PLANTA DE INCENDIO ESTRUCTURAL (CARAS A,B,C Y D), ADEMÁS DE CUADROS PARA EL TRABAJO OPERATIVO.\n- INCLUYE:\n- 50 FICHAS IMANTADAS PERSONALIZABLES\n- 1 LINTERNA SUPERIOR RECARGABLE.\n- PLUMONES Y BORRADOR\n- CARPETA CON FICHAS SCI`,
+        img: "./IMG/6.png",
+        price: "$1.000"
+      },
+      {
+        title: "Maleta S.C.I. Mediana",
+        desc: `CARACTERÍSTICAS\n- MALETAS FUNCIONALES PARA CAMIONETAS DE COMANDANCIA\n- PERSONIFICABLES\n- PORTABLES, SE PUEDEN TRASLADAR A CUALQUIER PARTE`,
+        img: "./IMG/7.png",
+        price: "$1.535.000"
+      }
+    ]
+  };
+
+  function showTab(tabKey, event) {
+    const dataList = tabData[tabKey];
+    const container = document.getElementById("cards-container");
+    container.innerHTML = '';
+
+    // Actualiza el mensaje del tab
+    const displayName = event?.currentTarget?.innerText || tabKey;
+    document.getElementById("tab-message").innerHTML = `Estás viendo contenido de <strong>${displayName}</strong>.`;
+
+    dataList.forEach((data, index) => {
+      const productId = `${tabKey}-${index}`;
+
+      // Crea la tarjeta y el modal juntos
+      const card = document.createElement('div');
+      card.className = "max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 mb-8";
+      card.innerHTML = `
+        <div class="px-4 py-2 bg-gray-100 dark:bg-gray-800">
+          <h1 class="text-xl font-bold text-gray-800 uppercase dark:text-white">${data.title}</h1>
+          <p class="descripcion-corta mt-1 text-sm text-gray-600 dark:text-gray-400">${data.desc}</p>
+        </div>
+        <img class="object-cover w-full aspect-square mt-2" src="${data.img}" alt="${data.title}">
+        <div class="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-800">
+          <h1 class="text-lg font-bold text-gray-800 dark:text-white">${data.price}</h1>
+        <button 
+        onclick="openTabModal(
+            decodeURIComponent('${encodeURIComponent(data.img)}'),
+            decodeURIComponent('${encodeURIComponent(data.title)}'),
+            decodeURIComponent('${encodeURIComponent(data.price)}'),
+            decodeURIComponent('${encodeURIComponent(data.desc)}')
+        )"
+        class="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+        Más información
+        </button>
+
+
+        </div>
+
+        <!-- Modal individual -->
+        <div id="modal-${productId}" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 hidden">
+          <div class="bg-white dark:bg-gray-900 w-11/12 md:w-2/3 lg:w-1/2 p-6 rounded-xl relative">
+            <button onclick="closeModal('${productId}')" class="absolute top-4 right-4 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white text-xl font-bold">&times;</button>
+            <img src="${data.img}" alt="${data.title}" class="w-full max-h-80 object-contain rounded mb-4">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">${data.title}</h2>
+            <p class="text-lg text-gray-700 dark:text-gray-300 font-semibold mb-4">${data.price}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">${data.desc}</p>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+    // Actualiza clases de botones de tab
+    const buttons = document.querySelectorAll(".tab-btn");
+    buttons.forEach(btn => {
+      btn.classList.remove("bg-gray-400", "border-gray-400");
+      btn.classList.add("text-white");
+    });
+    if(event?.currentTarget) event.currentTarget.classList.add("bg-gray-400", "border-gray-400");
+  }
+
+  function openTabModal(img, title, price, desc) {
+  document.getElementById('tabModalImg').src = img;
+  document.getElementById('tabModalTitle').textContent = title;
+  document.getElementById('tabModalPrice').textContent = price;
+  document.getElementById('tabModalDesc').innerHTML = desc.replace(/\n/g, "<br>");
+  document.getElementById('tabModal').classList.remove('hidden');
+}
+  function closeTabModal() {
+    document.getElementById('tabModal').classList.add('hidden');
+  }
+
+  // Carga inicial
+  window.addEventListener("DOMContentLoaded", () => {
+    // Asume que el primer botón de tabs tiene la clase .tab-btn y es el inicial
+    const firstTabBtn = document.querySelector(".tab-btn");
+    if (firstTabBtn) {
+      const tabKey = firstTabBtn.getAttribute('onclick').match(/showTab\('(\w+)'/)[1];
+      showTab(tabKey, { currentTarget: firstTabBtn });
+    }
+  });
+</script>
+
+    
+</body>
+
+</html>
